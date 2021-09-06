@@ -6,7 +6,7 @@ import java.util.ArrayList;
 import java.util.List;
 
 @RestController
-@RequestMapping("/students")
+@RequestMapping("/api")
 public class StudentApi {
 
     private List<Student> studentList;
@@ -21,20 +21,14 @@ public class StudentApi {
                 .filter(student -> student.getId() == id).findFirst().get();
     }
 
-    @GetMapping("/getAllStudents")
+    @GetMapping("/")
     public List<Student> getStudents() {
         return studentList;
     }
 
-    @PostMapping("/addStudent")
+    @PostMapping("/add")
     public boolean addStudent(@RequestBody Student student) {
         return studentList.add(student);
     }
 
-    @PostMapping("/removeStudent/{id}")
-    public boolean deleteStudent(@PathVariable int id) {
-        Student studentToDelete = studentList.stream()
-                .filter(student -> student.getId() == id).findFirst().get();
-        return studentList.remove(studentToDelete);
-    }
 }
