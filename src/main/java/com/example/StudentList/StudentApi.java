@@ -21,7 +21,7 @@ public class StudentApi {
                 .filter(student -> student.getId() == id).findFirst().get();
     }
 
-    @GetMapping("/")
+    @GetMapping("/showStudentList")
     public List<Student> getStudents() {
         return studentList;
     }
